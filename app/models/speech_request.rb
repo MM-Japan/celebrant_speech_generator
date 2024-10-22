@@ -1,0 +1,2 @@
+class SpeechRequest < ApplicationRecord
+end

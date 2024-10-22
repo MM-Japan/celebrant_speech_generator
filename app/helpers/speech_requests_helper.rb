@@ -1,0 +1,2 @@
+module SpeechRequestsHelper
+end
