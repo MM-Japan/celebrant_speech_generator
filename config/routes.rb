@@ -10,4 +10,10 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+
+
+  resources :speech_requests, only: [:new, :create, :show]
+  root "speech_requests#new"
+
+
 end

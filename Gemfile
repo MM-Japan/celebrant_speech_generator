@@ -67,3 +67,8 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+# Added gems
+gem 'dotenv-rails', groups: [:development, :test]
+gem 'ruby-openai'
+gem 'httparty'

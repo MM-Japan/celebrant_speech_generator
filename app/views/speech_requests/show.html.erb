@@ -1,2 +1,15 @@
-<h1>SpeechRequests#show</h1>
-<p>Find me in app/views/speech_requests/show.html.erb</p>
+<h1>Generated Speech for <%= @speech_request.name %></h1>
+
+<p><strong>Relation:</strong> <%= @speech_request.relation %></p>
+<p><strong>Memories:</strong> <%= @speech_request.memories %></p>
+
+<hr>
+
+<h2>Your Celebrant Speech</h2>
+<p>
+  <%= @generated_speech || "Speech is being generated. Please wait..." %>
+</p>
+
+<div>
+  <%= link_to 'Generate New Speech', new_speech_request_path, class: "btn btn-primary" %>
+</div>
