@@ -1,15 +1,12 @@
-<h1>Generated Speech for <%= @speech_request.name %></h1>
+<h1>Generated Celebrant Speech</h1>
 
+<p><strong>Name:</strong> <%= @speech_request.name %></p>
 <p><strong>Relation:</strong> <%= @speech_request.relation %></p>
 <p><strong>Memories:</strong> <%= @speech_request.memories %></p>
 
 <hr>
 
 <h2>Your Celebrant Speech</h2>
-<p>
-  <%= @generated_speech || "Speech is being generated. Please wait..." %>
-</p>
+<p><%= @speech_request.generated_speech %></p>
 
-<div>
-  <%= link_to 'Generate New Speech', new_speech_request_path, class: "btn btn-primary" %>
-</div>
+<%= link_to 'Create another speech', new_speech_request_path %>
