@@ -1,0 +1,12 @@
+<h1>Provide More Details</h1>
+
+<%= form_with model: @speech_request, url: speech_request_path(@speech_request), method: :patch, local: true do |form| %>
+  <% @follow_up_questions.each_with_index do |question, index| %>
+    <div>
+      <%= form.label "detailed_answers[answer_#{index}]", question %>
+      <%= form.text_area "detailed_answers[answer_#{index}]" %>
+    </div>
+  <% end %>
+
+  <%= form.submit "Submit Answers" %>
+<% end %>
