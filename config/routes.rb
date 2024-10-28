@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+
+  require 'sidekiq/web'
+  mount Sidekiq::Web => '/sidekiq'
+
   get 'speech_requests/new'
   get 'speech_requests/create'
   get 'speech_requests/show'
@@ -10,6 +14,12 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+
+  resources :speech_requests do
+    member do
+      get :check_status
+    end
+  end
 
 
   resources :speech_requests, only: [:new, :create, :show, :edit, :update]

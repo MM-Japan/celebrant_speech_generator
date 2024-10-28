@@ -10,6 +10,10 @@
     <% end %>
   <% end %>
 
+  <div class="form-group">
+    <%= form.label :tokens, "Speech Length" %>
+    <%= form.select :tokens, options_for_select([['Short (1000 tokens)', 1000], ['Medium (2000 tokens)', 2000], ['Long (3000 tokens)', 3000]], selected: @speech_request.tokens || 1000), class: "form-input" %>
+  </div>
+
   <%= form.submit "Submit Answers", class: "submit-button" %>
 <% end %>
-
