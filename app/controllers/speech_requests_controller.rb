@@ -32,10 +32,7 @@ class SpeechRequestsController < ApplicationController
   def update
     @speech_request = SpeechRequest.find(params[:id])
 
-    # Debugging: print the params to see if detailed_answers is being submitted
-    puts params.inspect
-
-    # Safely collect the detailed answers from the form
+    # Collect the detailed answers from the form
     if params[:speech_request][:detailed_answers].present?
       detailed_answers = params[:speech_request][:detailed_answers].values.join("\n")
     else
@@ -43,16 +40,27 @@ class SpeechRequestsController < ApplicationController
     end
 
     if @speech_request.update(detailed_answers: detailed_answers)
-      final_speech = ChatgptService.generate_speech(@speech_request)
-      @speech_request.update(generated_speech: final_speech)
+      # Start the background job to generate the speech
+      GenerateSpeechJob.perform_later(@speech_request.id)
 
-      redirect_to @speech_request, notice: 'The celebrant speech has been successfully generated.'
+      # Immediately redirect to the show page
+      redirect_to @speech_request, notice: 'The celebrant speech is being generated...'
     else
+      puts "didnt redirect"
       render :edit, status: :unprocessable_entity
     end
-
-    puts params.inspect
   end
+
+
+
+
+
+  # In speech_requests_controller.rb
+  def check_status
+    @speech_request = SpeechRequest.find(params[:id])
+    render json: { generated_speech: @speech_request.generated_speech }
+  end
+
 
 
 
@@ -62,19 +70,25 @@ class SpeechRequestsController < ApplicationController
     @speech_request = SpeechRequest.find(params[:id])
   end
 
+
+
   private
 
-  # def speech_request_params
-  #   params.require(:speech_request).permit(
-  #     :name, :age, :relation, :childhood_overview, :work_overview,
-  #     :family_overview, :hobbies_overview, :travel_overview,
-  #     detailed_answers: {}
-  #   )
-  # end
-
   def speech_request_params
-    params.require(:speech_request).permit!
+    params.require(:speech_request).permit(
+      :name,
+      :age,
+      :relation,
+      :childhood_overview,
+      :work_overview,
+      :family_overview,
+      :hobbies_overview,
+      :travel_overview,
+      :tokens,  # Include tokens for speech length
+      detailed_answers: {}  # Allows a hash of detailed answers
+    )
   end
+
 
 
 end

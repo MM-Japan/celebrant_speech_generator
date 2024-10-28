@@ -8,6 +8,42 @@
 <hr class="divider">
 
 <h2 class="speech-title">Your Celebrant Speech</h2>
-<p class="speech-content"><%= @speech_request.generated_speech %></p>
+
+
+
+
+<div id="speech-content">
+  <p>Loading your speech...</p>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const speechContent = document.getElementById("speech-content");
+    const speechRequestId = "<%= @speech_request.id %>";
+
+    // Avoid redeclaring 'polling' if it's already running
+    if (!window.speechPolling) {
+      function checkSpeechStatus() {
+        fetch(`/speech_requests/${speechRequestId}/check_status`)
+          .then(response => response.json())
+          .then(data => {
+            if (data.generated_speech) {
+              speechContent.innerHTML = `<p>${data.generated_speech}</p>`;
+              clearInterval(window.speechPolling);  // Stop polling when speech is ready
+            }
+          })
+          .catch(error => console.error("Error:", error));
+      }
+
+      // Start polling every 5 seconds and assign to window variable to avoid redeclaration
+      window.speechPolling = setInterval(checkSpeechStatus, 5000);
+    }
+  });
+</script>
+
+
+
+
+
 
 <%= link_to 'Create another speech', new_speech_request_path, class: "new-speech-link" %>

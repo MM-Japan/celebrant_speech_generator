@@ -1,19 +1,17 @@
 Rails.application.routes.draw do
-  get 'speech_requests/new'
-  get 'speech_requests/create'
-  get 'speech_requests/show'
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  require 'sidekiq/web'
+  mount Sidekiq::Web => '/sidekiq'
 
-  # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
-  # Can be used by load balancers and uptime monitors to verify that the app is live.
+  # Health check
   get "up" => "rails/health#show", as: :rails_health_check
 
-  # Defines the root path route ("/")
-  # root "posts#index"
-
-
-  resources :speech_requests, only: [:new, :create, :show, :edit, :update]
+  # Root path
   root "speech_requests#new"
 
-
+  # Main routes for speech_requests with check_status member route
+  resources :speech_requests, only: [:new, :create, :show, :edit, :update] do
+    member do
+      get :check_status
+    end
+  end
 end
