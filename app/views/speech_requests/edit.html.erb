@@ -5,7 +5,8 @@
     <% @follow_up_questions.each_with_index do |question, index| %>
       <div class="form-group">
         <%= detailed_form.label "answer_#{index}", question, class: "form-label" %>
-        <%= detailed_form.text_area "answer_#{index}", class: "form-textarea" %>
+        <%= detailed_form.text_area "answer_#{index}", id: "question-#{index}", class: "form-textarea" %>
+        <button type="button" onclick="startRecognition('question-<%= index %>')">🎤 Record</button>
       </div>
     <% end %>
   <% end %>
@@ -17,3 +18,37 @@
 
   <%= form.submit "Submit Answers", class: "submit-button" %>
 <% end %>
+
+<script>
+  if ('webkitSpeechRecognition' in window) {
+    const recognition = new webkitSpeechRecognition();
+    recognition.lang = 'en-US';
+    recognition.continuous = false;
+    recognition.interimResults = false;
+
+    function startRecognition(inputId) {
+      recognition.start();
+
+      recognition.onresult = function(event) {
+        const transcript = event.results[0][0].transcript;
+        const inputField = document.getElementById(inputId);
+
+        if (inputField) {
+          inputField.value = transcript;
+        } else {
+          console.error(`Element with id '${inputId}' not found.`);
+        }
+      };
+
+      recognition.onerror = function(event) {
+        console.error("Speech recognition error:", event.error);
+      };
+
+      recognition.onend = function() {
+        console.log("Speech recognition ended.");
+      };
+    }
+  } else {
+    alert("Speech recognition not supported in this browser.");
+  }
+</script>
