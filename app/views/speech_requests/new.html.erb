@@ -1,46 +1,45 @@
-<h1>Create a Celebrant Speech</h1>
+<h1 class="form-title">Create a Celebrant Speech</h1>
 
-<%= form_with model: @speech_request, url: speech_requests_path, method: :post, local: true do |form| %>
-  <div>
-    <%= form.label :name, "Name of the Deceased" %>
-    <%= form.text_field :name, value: "Johnathan Miller" %>
+<%= form_with model: @speech_request, url: speech_requests_path, method: :post, local: true, html: { class: "speech-form" } do |form| %>
+  <div class="form-group">
+    <%= form.label :name, "Name of the Deceased", class: "form-label" %>
+    <%= form.text_field :name, value: "Johnathan Miller", class: "form-input" %>
   </div>
 
-  <div>
-    <%= form.label :age, "Age at Passing" %>
-    <%= form.number_field :age, value: 82 %>
+  <div class="form-group">
+    <%= form.label :age, "Age at Passing", class: "form-label" %>
+    <%= form.number_field :age, value: 82, class: "form-input" %>
   </div>
 
-  <div>
-    <%= form.label :relation, "Your Relationship to Them" %>
-    <%= form.text_field :relation, value: "Son" %>
+  <div class="form-group">
+    <%= form.label :relation, "Your Relationship to Them", class: "form-label" %>
+    <%= form.text_field :relation, value: "Son", class: "form-input" %>
   </div>
 
-  <div>
-    <%= form.label :childhood_overview, "General Overview of Their Childhood" %>
-    <%= form.text_area :childhood_overview, value: "Johnathan was the eldest of three siblings, growing up in a small town in Wisconsin. He was known for his adventurous spirit, often getting into mischief with his younger brothers. He was a bright student and particularly loved history and science." %>
+  <div class="form-group">
+    <%= form.label :childhood_overview, "General Overview of Their Childhood", class: "form-label" %>
+    <%= form.text_area :childhood_overview, value: "Johnathan was the eldest of three siblings, growing up in a small town in Wisconsin. He was known for his adventurous spirit, often getting into mischief with his younger brothers. He was a bright student and particularly loved history and science.", class: "form-textarea" %>
   </div>
 
-  <div>
-    <%= form.label :work_overview, "General Overview of Their Work" %>
-    <%= form.text_area :work_overview, value: "Johnathan worked as an accountant for 40 years, serving various local businesses and nonprofits. He found joy in helping people manage their finances and simplifying complex tax situations." %>
+  <div class="form-group">
+    <%= form.label :work_overview, "General Overview of Their Work", class: "form-label" %>
+    <%= form.text_area :work_overview, value: "Johnathan worked as an accountant for 40 years, serving various local businesses and nonprofits. He found joy in helping people manage their finances and simplifying complex tax situations.", class: "form-textarea" %>
   </div>
 
-  <div>
-    <%= form.label :family_overview, "General Overview of Their Family Life" %>
-    <%= form.text_area :family_overview, value: "Johnathan married his high school sweetheart, Margaret, and they raised three children. He loved coaching his kids' baseball teams and attending their school events." %>
+  <div class="form-group">
+    <%= form.label :family_overview, "General Overview of Their Family Life", class: "form-label" %>
+    <%= form.text_area :family_overview, value: "Johnathan married his high school sweetheart, Margaret, and they raised three children. He loved coaching his kids' baseball teams and attending their school events.", class: "form-textarea" %>
   </div>
 
-  <div>
-    <%= form.label :hobbies_overview, "General Overview of Their Interests and Hobbies" %>
-    <%= form.text_area :hobbies_overview, value: "Johnathan had a lifelong passion for woodworking, building everything from birdhouses to furniture. He was also an avid reader, especially of historical non-fiction." %>
+  <div class="form-group">
+    <%= form.label :hobbies_overview, "General Overview of Their Interests and Hobbies", class: "form-label" %>
+    <%= form.text_area :hobbies_overview, value: "Johnathan had a lifelong passion for woodworking, building everything from birdhouses to furniture. He was also an avid reader, especially of historical non-fiction.", class: "form-textarea" %>
   </div>
 
-  <div>
-    <%= form.label :travel_overview, "General Overview of Their Travel" %>
-    <%= form.text_area :travel_overview, value: "After retirement, Johnathan and Margaret traveled to Italy, France, and Japan, with Florence being his favorite city due to its rich history and art." %>
+  <div class="form-group">
+    <%= form.label :travel_overview, "General Overview of Their Travel", class: "form-label" %>
+    <%= form.text_area :travel_overview, value: "After retirement, Johnathan and Margaret traveled to Italy, France, and Japan, with Florence being his favorite city due to its rich history and art.", class: "form-textarea" %>
   </div>
 
-  <%= form.submit "Submit" %>
+  <%= form.submit "Submit", class: "submit-button" %>
 <% end %>
-

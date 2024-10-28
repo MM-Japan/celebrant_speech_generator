@@ -1,15 +1,303 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+/* Variables for colors */
+:root {
+  --rose-gold: #b76e79;
+  --light-gray: #f4f4f4;
+  --soft-blue: #e0efff;
+  --dark-gray: #333;
+  --text-color: #4a4a4a;
+  --font-stack: "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Global Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-stack);
+  color: var(--text-color);
+  background-color: var(--light-gray);
+}
+
+/* Header */
+.header {
+  background-color: var(--rose-gold);
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+}
+
+.header .logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.header .nav-links a {
+  color: white;
+  text-decoration: none;
+  margin-left: 1.5rem;
+}
+
+.header .nav-links a:hover {
+  color: var(--soft-blue);
+}
+
+/* Main Form Section */
+.form-section {
+  background-color: white;
+  margin: 2rem auto;
+  padding: 2rem;
+  border-radius: 8px;
+  max-width: 800px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-section h1 {
+  color: var(--rose-gold);
+  margin-bottom: 1rem;
+}
+
+.form-section label {
+  font-weight: bold;
+  color: var(--dark-gray);
+}
+
+.form-section input,
+.form-section textarea {
+  width: 100%;
+  padding: 0.8rem;
+  margin: 0.5rem 0 1rem;
+  border: 1px solid var(--light-gray);
+  border-radius: 4px;
+}
+
+.form-section input:focus,
+.form-section textarea:focus {
+  outline: none;
+  border-color: var(--rose-gold);
+  box-shadow: 0 0 5px rgba(183, 110, 121, 0.5);
+}
+
+.form-section .submit-button {
+  background-color: var(--rose-gold);
+  color: white;
+  border: none;
+  padding: 0.8rem 2rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.form-section .submit-button:hover {
+  background-color: #a2616f;
+}
+
+/* Speech Output Section */
+.speech-output {
+  background-color: var(--soft-blue);
+  margin: 2rem auto;
+  padding: 1.5rem;
+  border-radius: 8px;
+  max-width: 800px;
+  color: var(--dark-gray);
+}
+
+.speech-output .output-text {
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.speech-output .edit-button {
+  background-color: var(--rose-gold);
+  color: white;
+  padding: 0.5rem 1.5rem;
+  border-radius: 4px;
+  margin-top: 1rem;
+  border: none;
+  cursor: pointer;
+}
+
+.speech-output .edit-button:hover {
+  background-color: #a2616f;
+}
+
+/* Footer */
+.footer {
+  background-color: var(--dark-gray);
+  padding: 1rem;
+  color: white;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.footer a {
+  color: var(--rose-gold);
+  text-decoration: none;
+  margin: 0 0.5rem;
+}
+
+.footer a:hover {
+  color: #d08b94;
+}
+
+.speech-form {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-title {
+  color: var(--rose-gold);
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-label {
+  font-weight: bold;
+  color: var(--dark-gray);
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.form-input,
+.form-textarea {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid var(--light-gray);
+  border-radius: 4px;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: var(--rose-gold);
+  box-shadow: 0 0 5px rgba(183, 110, 121, 0.5);
+}
+
+.form-textarea {
+  height: 100px;
+  resize: vertical;
+}
+
+.details-form {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-title {
+  color: var(--rose-gold);
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-label {
+  font-weight: bold;
+  color: var(--dark-gray);
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.form-textarea {
+  width: 100%;
+  height: 100px;
+  padding: 0.8rem;
+  border: 1px solid var(--light-gray);
+  border-radius: 4px;
+  resize: vertical;
+}
+
+.form-textarea:focus {
+  outline: none;
+  border-color: var(--rose-gold);
+  box-shadow: 0 0 5px rgba(183, 110, 121, 0.5);
+}
+
+.submit-button {
+  background-color: var(--rose-gold);
+  color: white;
+  border: none;
+  padding: 0.8rem 2rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  display: block;
+  margin: 0 auto;
+}
+
+.submit-button:hover {
+  background-color: #a2616f;
+}
+
+/* General Styling for Speech Page */
+.page-title {
+  color: var(--rose-gold);
+  font-size: 1.8rem;
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+.speech-details {
+  margin: 1.5rem auto;
+  max-width: 800px;
+  font-size: 1.1rem;
+  color: var(--dark-gray);
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid var(--light-gray);
+  margin: 2rem 0;
+}
+
+.speech-title {
+  font-size: 1.5rem;
+  color: var(--rose-gold);
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.speech-content {
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: var(--text-color);
+  padding: 1.5rem;
+  background-color: var(--light-gray);
+  border-radius: 8px;
+}
+
+.new-speech-link {
+  display: block;
+  margin: 2rem auto;
+  text-align: center;
+  font-size: 1.1rem;
+  color: var(--rose-gold);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.new-speech-link:hover {
+  color: #a2616f;
+}
