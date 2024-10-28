@@ -11,6 +11,7 @@
 
 
 
+
 <div id="speech-content">
   <p>Loading your speech...</p>
 </div>
@@ -20,22 +21,26 @@
     const speechContent = document.getElementById("speech-content");
     const speechRequestId = "<%= @speech_request.id %>";
 
-    const checkSpeechStatus = () => {
-      fetch(`/speech_requests/${speechRequestId}/check_status`)
-        .then(response => response.json())
-        .then(data => {
-          if (data.generated_speech) {
-            speechContent.innerHTML = `<p>${data.generated_speech}</p>`;
-            clearInterval(polling);  // Stop polling when speech is ready
-          }
-        })
-        .catch(error => console.error("Error:", error));
-    };
+    // Avoid redeclaring 'polling' if it's already running
+    if (!window.speechPolling) {
+      function checkSpeechStatus() {
+        fetch(`/speech_requests/${speechRequestId}/check_status`)
+          .then(response => response.json())
+          .then(data => {
+            if (data.generated_speech) {
+              speechContent.innerHTML = `<p>${data.generated_speech}</p>`;
+              clearInterval(window.speechPolling);  // Stop polling when speech is ready
+            }
+          })
+          .catch(error => console.error("Error:", error));
+      }
 
-    // Poll every 5 seconds
-    const polling = setInterval(checkSpeechStatus, 5000);
+      // Start polling every 5 seconds and assign to window variable to avoid redeclaration
+      window.speechPolling = setInterval(checkSpeechStatus, 5000);
+    }
   });
 </script>
+
 
 
 
