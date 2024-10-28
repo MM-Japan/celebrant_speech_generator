@@ -1,7 +1,5 @@
 <h1 class="form-title">Create a Celebrant Speech</h1>
 
-<h1 class="form-title">Create a Celebrant Speech</h1>
-
 <%= form_with model: @speech_request, url: speech_requests_path, method: :post, local: true, html: { class: "speech-form" } do |form| %>
   <div class="form-group">
     <%= form.label :name, "Name of the Deceased", class: "form-label" %>
