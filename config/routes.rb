@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   # root "posts#index"
 
 
-  resources :speech_requests, only: [:new, :create, :show]
+  resources :speech_requests, only: [:new, :create, :show, :edit, :update]
   root "speech_requests#new"
 
 
