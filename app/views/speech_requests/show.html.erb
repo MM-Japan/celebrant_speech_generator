@@ -9,19 +9,22 @@
 
 <h2 class="speech-title">Your Celebrant Speech</h2>
 
-
-
-
 <div id="speech-content">
   <p>Loading your speech...</p>
 </div>
+
+<!-- Audio Controls -->
+<button type="button" onclick="readAloud()">🔊 Play</button>
+<button type="button" onclick="pauseSpeech()">⏸️ Pause</button>
+<button type="button" onclick="resumeSpeech()">▶️ Resume</button>
+<button type="button" onclick="stopSpeech()">⏹️ Stop</button>
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     const speechContent = document.getElementById("speech-content");
     const speechRequestId = "<%= @speech_request.id %>";
+    let utterance;  // Declare globally to control state
 
-    // Avoid redeclaring 'polling' if it's already running
     if (!window.speechPolling) {
       function checkSpeechStatus() {
         fetch(`/speech_requests/${speechRequestId}/check_status`)
@@ -35,15 +38,36 @@
           .catch(error => console.error("Error:", error));
       }
 
-      // Start polling every 5 seconds and assign to window variable to avoid redeclaration
       window.speechPolling = setInterval(checkSpeechStatus, 5000);
     }
   });
+
+  function readAloud() {
+    const content = document.getElementById("speech-content").textContent;
+    if (content && content.trim() !== "Loading your speech...") {
+      stopSpeech();  // Stop any ongoing speech before starting new one
+      utterance = new SpeechSynthesisUtterance(content);
+      window.speechSynthesis.speak(utterance);
+    } else {
+      alert("The speech is not ready yet.");
+    }
+  }
+
+  function pauseSpeech() {
+    if (window.speechSynthesis.speaking && !window.speechSynthesis.paused) {
+      window.speechSynthesis.pause();
+    }
+  }
+
+  function resumeSpeech() {
+    if (window.speechSynthesis.paused) {
+      window.speechSynthesis.resume();
+    }
+  }
+
+  function stopSpeech() {
+    window.speechSynthesis.cancel();  // Stops the speech synthesis completely
+  }
 </script>
-
-
-
-
-
 
 <%= link_to 'Create another speech', new_speech_request_path, class: "new-speech-link" %>
