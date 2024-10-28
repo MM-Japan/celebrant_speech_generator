@@ -67,8 +67,21 @@ class ChatgptService
       detailed_answers = speech_request.detailed_answers || "No additional details provided."
     end
 
+    # Length of speech
+
+    length_guidance = case speech_request.tokens
+    when 1000
+      "it should be a concise, 5-minute speech, approximately 750 words."
+    when 2000
+      "it should be a detailed, 10-minute speech, approximately 1500 words."
+    when 3000
+      "it should be an in-depth, 15-minute speech, approximately 2250 words."
+    else
+      "it should be a concise speech of about 750 words."  # Default guidance
+    end
+
     # Create the prompt, including the detailed answers in plain text
-    prompt = "Using the following details, create a heartfelt celebrant speech:
+    prompt = "Using the following details, create a heartfelt celebrant speech, #{length_guidance}:
               Childhood: #{speech_request.childhood_overview}
               Work: #{speech_request.work_overview}
               Family: #{speech_request.family_overview}
@@ -86,7 +99,7 @@ class ChatgptService
       body: {
         model: "gpt-3.5-turbo",
         messages: [{ role: "user", content: prompt }],
-        max_tokens: 1000
+        max_tokens: speech_request.tokens
       }.to_json
     )
 
