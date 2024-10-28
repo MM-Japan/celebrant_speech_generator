@@ -55,19 +55,15 @@ class SpeechRequestsController < ApplicationController
 
 
 
-  # In speech_requests_controller.rb
+  
   def check_status
     @speech_request = SpeechRequest.find(params[:id])
     render json: { generated_speech: @speech_request.generated_speech }
   end
 
-
-
-
-
-
   def show
     @speech_request = SpeechRequest.find(params[:id])
+    @sentiment = @speech_request.analyze_sentiment
   end
 
 
