@@ -25,11 +25,11 @@ class SentimentAnalyzer
 
   def calculate_sentiment(positive_count, negative_count)
     if positive_count > negative_count
-      'positive'
+      'Positive'
     elsif negative_count > positive_count
-      'negative'
+      'Negative'
     else
-      'neutral'
+      'Neutral'
     end
   end
 end
