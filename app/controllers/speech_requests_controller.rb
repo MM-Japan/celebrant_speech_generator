@@ -27,23 +27,6 @@ class SpeechRequestsController < ApplicationController
     @follow_up_questions = @speech_request.follow_up_questions.split("\n")
   end
 
-  def show
-    @speech_request = SpeechRequest.find(params[:id])
-
-    respond_to do |format|
-      format.html # Standard HTML response
-      format.turbo_stream do
-        # Render only if the speech is ready
-        if @speech_request.generated_speech.present?
-          render turbo_stream: turbo_stream.replace("speech_frame", partial: "speech_requests/speech_content", locals: { speech_request: @speech_request })
-        else
-          head :no_content
-        end
-      end
-    end
-  end
-
-
 
 
   def update
@@ -70,11 +53,15 @@ class SpeechRequestsController < ApplicationController
 
 
 
+
+
+  # In speech_requests_controller.rb
   def check_status
     @speech_request = SpeechRequest.find(params[:id])
-
     render json: { generated_speech: @speech_request.generated_speech }
   end
+
+
 
 
 
