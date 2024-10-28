@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :speech_requests, only: [:new, :create, :show, :edit, :update] do
     member do
       get :check_status
+      post :analyze_sentiment
     end
   end
 end
