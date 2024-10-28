@@ -50,6 +50,8 @@ class SpeechRequestsController < ApplicationController
     else
       render :edit, status: :unprocessable_entity
     end
+
+    puts params.inspect
   end
 
 
