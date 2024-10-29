@@ -2,46 +2,87 @@
 
 <section class="hero">
   <div class="hero-content">
-    <h1>Create Heartfelt Celebrant Speeches with Ease</h1>
-    <p class="mb-5">Our AI-assisted tool helps you craft memorable and personalized speeches to honor your loved ones.</p>
+    <h1><strong>Create Heartfelt Celebrant Speeches with Ease</strong></h1>
+    <h2 class="mb-5">Our AI-assisted tool helps you craft memorable and personalized speeches to honor your loved ones.</h2>
     <%= link_to "Get Started", new_speech_request_path, class: "cta-button" %>
   </div>
 </section>
 
 
 <section class="how-it-works">
-  <h2>How It Works</h2>
-  <div class="steps">
-    <div class="step">
-      <h3>1. Share Key Details</h3>
-      <p>Provide us with some initial information about your loved one.</p>
-    </div>
-    <div class="step">
-      <h3>2. Answer Follow-up Questions</h3>
-      <p>Help us get to know them better.</p>
-    </div>
-    <div class="step">
-      <h3>3. Generate Speech</h3>
-      <p>Receive a beautiful, personalized speech.</p>
+  <h2 class="section-title">How It Works</h2>
+  <div class="steps-container">
+    <div class="steps">
+      <div class="step">
+        <div class="step-icon">1</div> <!-- Use icons or numbers for steps -->
+        <h3>Share Key Details</h3>
+        <p>Provide us with some initial information about your loved one. The more information you share, the better the final speech will be.</p>
+      </div>
+      <div class="step">
+        <div class="step-icon">2</div>
+        <h3>Answer Follow-up Questions</h3>
+        <p>Help us get to know them better. The AI will create follow-up questions to help you craft the perfect speech.</p>
+      </div>
+      <div class="step">
+        <div class="step-icon">3</div>
+        <h3>Generate Speech</h3>
+        <p>Receive a beautiful, personalized speech.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="features">
-  <h2>Features</h2>
-  <div class="feature">
-    <h3>Sentiment Analysis</h3>
-    <p>Ensures your speech strikes the right emotional tone.</p>
+
+<div id="featuresCarousel" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#featuresCarousel" data-slide-to="0" class="active"></li>
+    <li data-target="#featuresCarousel" data-slide-to="1"></li>
+    <li data-target="#featuresCarousel" data-slide-to="2"></li>
+  </ol>
+
+  <!-- Carousel slides -->
+  <div class="carousel-inner">
+    <!-- Slide 1 -->
+    <div class="carousel-item active" style="background-image: url('<%= asset_path("carousel-image-1.webp") %>'); background-size: cover; height: 300px;">
+      <div class="d-flex justify-content-center align-items-center flex-column text-center" style="background-color: rgba(255, 255, 255, 0.6); width: 100%; height: 100%;">
+        <h3>Sentiment Analysis</h3>
+        <p>Ensures your speech strikes the right emotional tone.</p>
+      </div>
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="carousel-item" style="background-image: url('<%= asset_path("carousel-image-2.webp") %>'); background-size: cover; height: 300px;">
+      <div class="d-flex justify-content-center align-items-center flex-column text-center" style="background-color: rgba(255, 255, 255, 0.6); width: 100%; height: 100%;">
+        <h3>Speech-to-Text</h3>
+        <p>Easily record thoughts and memories.</p>
+      </div>
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="carousel-item" style="background-image: url('<%= asset_path("carousel-image-3.webp") %>'); background-size: cover; height: 300px;">
+      <div class="d-flex justify-content-center align-items-center flex-column text-center" style="background-color: rgba(255, 255, 255, 0.6); width: 100%; height: 100%;">
+        <h3>Real-Time Suggestions</h3>
+        <p>Guides you with meaningful questions to enrich your tribute.</p>
+      </div>
+    </div>
   </div>
-  <div class="feature">
-    <h3>Speech-to-Text</h3>
-    <p>Easily record thoughts and memories.</p>
-  </div>
-  <div class="feature">
-    <h3>Real-Time Suggestions</h3>
-    <p>Guides you with meaningful questions to enrich your tribute.</p>
-  </div>
-</section>
+
+
+  <!-- Controls -->
+  <a class="carousel-control-prev" href="#featuresCarousel" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#featuresCarousel" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+
+
+
+
 
 <section class="testimonials">
   <h2>What Our Users Say</h2>
@@ -51,7 +92,12 @@
 
 
 <section class="final-cta">
-  <div class="d-flex justify-content-center">
-    <%= link_to "Start Creating a Speech", new_speech_request_path, class: "cta-button" %>
+    <div class="jumbotron">
+  <div class="container text-center">
+      <h1 class="display-4">Try it out today.</h1>
+      <p class="lead">Create an account now and try out the service for free</p>
+      <hr class="my-4">
+      <%= link_to "Start Creating a Speech", new_speech_request_path, class: "btn btn-primary cta-button" %>
+    </div>
   </div>
 </section>
