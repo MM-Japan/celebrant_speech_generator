@@ -21,6 +21,15 @@ body {
   background-color: var(--light-gray);
 }
 
+h1 {
+  font-size: 83px;
+  text-shadow: #333;
+}
+
+h2 {
+  font-size: 24px;
+}
+
 /* Header */
 .header {
   background-color: var(--rose-gold);
@@ -309,14 +318,6 @@ body {
   padding: 2em;
 }
 
-.steps, .features {
-  display: flex;
-  justify-content: space-around;
-}
-
-.steps .step, .features .feature {
-  width: 30%;
-}
 
 .testimonials {
   text-align: center;
@@ -410,7 +411,7 @@ body {
 .hero-content {
   position: relative;
   z-index: 1; /* Ensures content is above the overlay */
-  max-width: 800px;
+  max-width: 1400px;
   padding: 20px;
 }
 
@@ -427,4 +428,128 @@ body {
 
 .cta-button:hover {
   background-color: #e65a50; /* Darker hover effect */
+  text-decoration: none;
+  color: #ffffff;
+}
+
+/* General Section Styling */
+.how-it-works {
+  text-align: center;
+  padding: 60px 20px;
+  background-color: #f9f9f9; /* Light background to make steps stand out */
+}
+
+.section-title {
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  color: #333;
+}
+
+/* Step Container Styling */
+.steps {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 20px;
+}
+
+.steps-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  padding-top: 2rem;
+}
+
+.steps-container::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  right: 10%;
+  height: 3px;
+  background-color: #ff4081; /* Adjust color as needed */
+  z-index: -1;
+}
+
+.step {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 30%;
+  max-width: 300px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.step:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.step-icon {
+  font-size: 1.5rem;
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #e91e63; /* Rose color */
+  color: white;
+  border-radius: 50%;
+  margin-bottom: 15px;
+}
+
+h3 {
+  font-size: 1.25rem;
+  color: #333;
+}
+
+p {
+  color: #555;
+}
+
+.features {
+  background-color: #f9f9f9; /* Light background color to distinguish the section */
+}
+
+.features h2 {
+  font-size: 2rem;
+  color: #333;
+}
+
+.feature-item {
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.icon-wrapper {
+  font-size: 2.5rem;
+  color: #e91e63; /* Example color for icons */
+}
+
+.feature-item h3 {
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.feature-item p {
+  font-size: 1rem;
+  color: #666;
+}
+
+
+
+/* Responsive Design for Mobile */
+@media (max-width: 768px) {
+  .steps {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .step {
+    width: 90%;
+  }
 }
