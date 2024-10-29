@@ -1,0 +1,57 @@
+<!-- app/views/pages/home.html.erb -->
+
+<section class="hero">
+  <div class="hero-content">
+    <h1>Create Heartfelt Celebrant Speeches with Ease</h1>
+    <p class="mb-5">Our AI-assisted tool helps you craft memorable and personalized speeches to honor your loved ones.</p>
+    <%= link_to "Get Started", new_speech_request_path, class: "cta-button" %>
+  </div>
+</section>
+
+
+<section class="how-it-works">
+  <h2>How It Works</h2>
+  <div class="steps">
+    <div class="step">
+      <h3>1. Share Key Details</h3>
+      <p>Provide us with some initial information about your loved one.</p>
+    </div>
+    <div class="step">
+      <h3>2. Answer Follow-up Questions</h3>
+      <p>Help us get to know them better.</p>
+    </div>
+    <div class="step">
+      <h3>3. Generate Speech</h3>
+      <p>Receive a beautiful, personalized speech.</p>
+    </div>
+  </div>
+</section>
+
+<section class="features">
+  <h2>Features</h2>
+  <div class="feature">
+    <h3>Sentiment Analysis</h3>
+    <p>Ensures your speech strikes the right emotional tone.</p>
+  </div>
+  <div class="feature">
+    <h3>Speech-to-Text</h3>
+    <p>Easily record thoughts and memories.</p>
+  </div>
+  <div class="feature">
+    <h3>Real-Time Suggestions</h3>
+    <p>Guides you with meaningful questions to enrich your tribute.</p>
+  </div>
+</section>
+
+<section class="testimonials">
+  <h2>What Our Users Say</h2>
+  <blockquote>“This platform helped me create a beautiful tribute for my father.”</blockquote>
+  <p>- Emily R.</p>
+</section>
+
+
+<section class="final-cta">
+  <div class="d-flex justify-content-center">
+    <%= link_to "Start Creating a Speech", new_speech_request_path, class: "cta-button" %>
+  </div>
+</section>
