@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   # Root path
-  root "speech_requests#new"
+  # In config/routes.rb
+  root "pages#home" # If using PagesController
+
 
   # Main routes for speech_requests with check_status member route
   resources :speech_requests, only: [:new, :create, :show, :edit, :update] do
