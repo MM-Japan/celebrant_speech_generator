@@ -1,61 +1,61 @@
-<h1 class="form-title">Create a Celebrant Speech</h1>
+<section class="details-form-container">
+  <h1 class="form-title">Create a Celebrant Speech</h1>
 
-<%= form_with model: @speech_request, url: speech_requests_path, method: :post, local: true, html: { class: "speech-form" } do |form| %>
-  <div class="form-group">
-    <%= form.label :name, "Name of the Deceased", class: "form-label" %>
-    <%= form.text_field :name, value: "Johnathan Miller", id: "name-input", class: "form-input" %>
-    <button type="button" onclick="startRecognition('name-input')">🎤 Record</button>
-  </div>
+  <%= form_with model: @speech_request, url: speech_requests_path, method: :post, local: true, html: { class: "speech-form" } do |form| %>
+    <div class="form-group">
+      <%= form.label :name, "Name of the Deceased", class: "form-label" %>
+      <%= form.text_field :name, value: "Johnathan Miller", id: "name-input", class: "form-input" %>
+      <button type="button" onclick="startRecognition('name-input')" class="record-button">🎤 Record</button>
+    </div>
 
-  <div class="form-group">
-    <%= form.label :age, "Age at Passing", class: "form-label" %>
-    <%= form.number_field :age, value: 82, id: "age-input", class: "form-input" %>
-    <button type="button" onclick="startRecognition('age-input')">🎤 Record</button>
-  </div>
+    <div class="form-group">
+      <%= form.label :age, "Age at Passing", class: "form-label" %>
+      <%= form.number_field :age, value: 82, id: "age-input", class: "form-input" %>
+      <button type="button" onclick="startRecognition('age-input')" class="record-button">🎤 Record</button>
+    </div>
 
-  <div class="form-group">
-    <%= form.label :relation, "Your Relationship to Them", class: "form-label" %>
-    <%= form.text_field :relation, value: "Son", id: "relation-input", class: "form-input" %>
-    <button type="button" onclick="startRecognition('relation-input')">🎤 Record</button>
-  </div>
+    <div class="form-group">
+      <%= form.label :relation, "Your Relationship to Them", class: "form-label" %>
+      <%= form.text_field :relation, value: "Son", id: "relation-input", class: "form-input" %>
+      <button type="button" onclick="startRecognition('relation-input')" class="record-button">🎤 Record</button>
+    </div>
 
-  <div class="form-group">
-    <%= form.label :childhood_overview, "General Overview of Their Childhood", class: "form-label" %>
-    <%= form.text_area :childhood_overview, value: "Johnathan was the eldest of three siblings...", id: "childhood-overview-input", class: "form-textarea" %>
-    <button type="button" onclick="startRecognition('childhood-overview-input')">🎤 Record</button>
-  </div>
+    <div class="form-group">
+      <%= form.label :childhood_overview, "General Overview of Their Childhood", class: "form-label" %>
+      <%= form.text_area :childhood_overview, value: "Johnathan was the eldest of three siblings...", id: "childhood-overview-input", class: "form-textarea" %>
+      <button type="button" onclick="startRecognition('childhood-overview-input')" class="record-button">🎤 Record</button>
+    </div>
 
-  <div class="form-group">
-    <%= form.label :work_overview, "General Overview of Their Work", class: "form-label" %>
-    <%= form.text_area :work_overview, value: "Johnathan worked as an accountant for 40 years...", id: "work-overview-input", class: "form-textarea" %>
-    <button type="button" onclick="startRecognition('work-overview-input')">🎤 Record</button>
-  </div>
+    <div class="form-group">
+      <%= form.label :work_overview, "General Overview of Their Work", class: "form-label" %>
+      <%= form.text_area :work_overview, value: "Johnathan worked as an accountant for 40 years...", id: "work-overview-input", class: "form-textarea" %>
+      <button type="button" onclick="startRecognition('work-overview-input')" class="record-button">🎤 Record</button>
+    </div>
 
-  <div class="form-group">
-    <%= form.label :family_overview, "General Overview of Their Family Life", class: "form-label" %>
-    <%= form.text_area :family_overview, value: "Johnathan married his high school sweetheart...", id: "family-overview-input", class: "form-textarea" %>
-    <button type="button" onclick="startRecognition('family-overview-input')">🎤 Record</button>
-  </div>
+    <div class="form-group">
+      <%= form.label :family_overview, "General Overview of Their Family Life", class: "form-label" %>
+      <%= form.text_area :family_overview, value: "Johnathan married his high school sweetheart...", id: "family-overview-input", class: "form-textarea" %>
+      <button type="button" onclick="startRecognition('family-overview-input')" class="record-button">🎤 Record</button>
+    </div>
 
-  <div class="form-group">
-    <%= form.label :hobbies_overview, "General Overview of Their Interests and Hobbies", class: "form-label" %>
-    <%= form.text_area :hobbies_overview, value: "Johnathan had a lifelong passion for woodworking...", id: "interests-hobbies-input", class: "form-textarea" %>
-    <button type="button" onclick="startRecognition('interests-hobbies-input')">🎤 Record</button>
-  </div>
+    <div class="form-group">
+      <%= form.label :hobbies_overview, "General Overview of Their Interests and Hobbies", class: "form-label" %>
+      <%= form.text_area :hobbies_overview, value: "Johnathan had a lifelong passion for woodworking...", id: "interests-hobbies-input", class: "form-textarea" %>
+      <button type="button" onclick="startRecognition('interests-hobbies-input')" class="record-button">🎤 Record</button>
+    </div>
 
-  <div class="form-group">
-    <%= form.label :travel_overview, "General Overview of Their Travel", class: "form-label" %>
-    <%= form.text_area :travel_overview, value: "After retirement, Johnathan and Margaret traveled...", id: "travel-overview-input", class: "form-textarea" %>
-    <button type="button" onclick="startRecognition('travel-overview-input')">🎤 Record</button>
-  </div>
+    <div class="form-group">
+      <%= form.label :travel_overview, "General Overview of Their Travel", class: "form-label" %>
+      <%= form.text_area :travel_overview, value: "After retirement, Johnathan and Margaret traveled...", id: "travel-overview-input", class: "form-textarea" %>
+      <button type="button" onclick="startRecognition('travel-overview-input')" class="record-button">🎤 Record</button>
+    </div>
 
-  <%= form.submit "Submit", class: "submit-button" %>
-<% end %>
-
-
+    <%= form.submit "Submit", class: "submit-button" %>
+  <% end %>
+</section>
 
 <script>
-  // Check if the Web Speech API is supported
+  // JavaScript for Web Speech API remains unchanged
   if ('webkitSpeechRecognition' in window) {
     const recognition = new webkitSpeechRecognition();
     recognition.lang = 'en-US';
@@ -88,3 +88,4 @@
     alert("Speech recognition not supported in this browser.");
   }
 </script>
+

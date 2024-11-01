@@ -73,3 +73,4 @@ gem 'dotenv-rails', groups: [:development, :test]
 gem 'ruby-openai'
 gem 'httparty'
 gem 'sidekiq'
+gem 'font-awesome-sass'

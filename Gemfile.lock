@@ -116,6 +116,9 @@ GEM
       multipart-post (~> 2)
     faraday-net_http (3.3.0)
       net-http
+    ffi (1.17.0-x86_64-linux-gnu)
+    font-awesome-sass (6.5.2)
+      sassc (~> 2.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
     httparty (0.22.0)
@@ -226,6 +229,8 @@ GEM
       faraday (>= 1)
       faraday-multipart (>= 1)
     rubyzip (2.3.2)
+    sassc (2.4.0)
+      ffi (~> 1.9)
     selenium-webdriver (4.25.0)
       base64 (~> 0.2)
       logger (~> 1.4)
@@ -278,6 +283,7 @@ DEPENDENCIES
   debug
   dotenv-rails
   error_highlight (>= 0.4.0)
+  font-awesome-sass
   httparty
   importmap-rails
   jbuilder

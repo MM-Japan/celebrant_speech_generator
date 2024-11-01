@@ -1,23 +1,26 @@
-<h1 class="form-title">Provide More Details</h1>
+<section class="details-form-container">
+  <h1 class="form-title">Provide More Details</h1>
 
-<%= form_with model: @speech_request, url: speech_request_path(@speech_request), method: :patch, local: true, html: { class: "details-form" } do |form| %>
-  <%= form.fields_for :detailed_answers do |detailed_form| %>
-    <% @follow_up_questions.each_with_index do |question, index| %>
-      <div class="form-group">
-        <%= detailed_form.label "answer_#{index}", question, class: "form-label" %>
-        <%= detailed_form.text_area "answer_#{index}", id: "question-#{index}", class: "form-textarea" %>
-        <button type="button" onclick="startRecognition('question-<%= index %>')">🎤 Record</button>
-      </div>
+  <%= form_with model: @speech_request, url: speech_request_path(@speech_request), method: :patch, local: true, html: { class: "details-form" } do |form| %>
+    <%= form.fields_for :detailed_answers do |detailed_form| %>
+      <% @follow_up_questions.each_with_index do |question, index| %>
+        <div class="form-group">
+          <%= detailed_form.label "answer_#{index}", question, class: "form-label" %>
+          <%= detailed_form.text_area "answer_#{index}", id: "question-#{index}", class: "form-textarea" %>
+          <button type="button" class="record-button" onclick="startRecognition('question-<%= index %>')">🎤 Record</button>
+        </div>
+      <% end %>
     <% end %>
+
+    <div class="form-group">
+      <%= form.label :tokens, "Speech Length", class: "form-label" %>
+      <%= form.select :tokens, options_for_select([['Short (1000 tokens)', 1000], ['Medium (2000 tokens)', 2000], ['Long (3000 tokens)', 3000]], selected: @speech_request.tokens || 1000), class: "form-input" %>
+    </div>
+
+    <%= form.submit "Submit Answers", class: "submit-button" %>
   <% end %>
+</section>
 
-  <div class="form-group">
-    <%= form.label :tokens, "Speech Length" %>
-    <%= form.select :tokens, options_for_select([['Short (1000 tokens)', 1000], ['Medium (2000 tokens)', 2000], ['Long (3000 tokens)', 3000]], selected: @speech_request.tokens || 1000), class: "form-input" %>
-  </div>
-
-  <%= form.submit "Submit Answers", class: "submit-button" %>
-<% end %>
 
 <script>
   if ('webkitSpeechRecognition' in window) {
