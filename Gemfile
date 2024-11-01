@@ -81,5 +81,5 @@ group :development, :test do
   gem 'sqlite3'
 end
 
-gem 'ffi', '~> 1.15'
+gem 'ffi', '~> 1.15.5'
 
