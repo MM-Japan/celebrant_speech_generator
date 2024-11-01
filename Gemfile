@@ -83,5 +83,5 @@ end
 
 gem 'ffi', '~> 1.15.5'
 
-gem 'redis', '~> 4.0', require: ['redis', 'redis/connection/hiredis']
+gem 'redis', '~> 4.0'
 
