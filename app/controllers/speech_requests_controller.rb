@@ -24,7 +24,8 @@ class SpeechRequestsController < ApplicationController
     @speech_request = SpeechRequest.find(params[:id])
 
     # Split the follow-up questions string into an array using newlines as the delimiter
-    @follow_up_questions = @speech_request.follow_up_questions.split("\n")
+    @follow_up_questions = @speech_request.follow_up_questions&.split("\n") || []
+
   end
 
 
@@ -55,7 +56,7 @@ class SpeechRequestsController < ApplicationController
 
 
 
-  
+
   def check_status
     @speech_request = SpeechRequest.find(params[:id])
     render json: { generated_speech: @speech_request.generated_speech }
