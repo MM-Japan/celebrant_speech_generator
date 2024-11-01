@@ -1,5 +1,6 @@
 # config/sidekiq.yml
-:concurrency: 5
+:concurrency: 3  # Adjust based on your Redis plan and usage
+
 :queues:
   - default
   - mailers

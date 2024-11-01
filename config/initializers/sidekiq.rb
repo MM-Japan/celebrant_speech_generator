@@ -1,5 +1,3 @@
-require 'sidekiq'
-
 Sidekiq.configure_server do |config|
   config.redis = { url: ENV.fetch("REDIS_URL"), ssl_params: { verify_mode: OpenSSL::SSL::VERIFY_NONE } }
 end
