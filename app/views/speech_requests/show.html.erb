@@ -10,21 +10,24 @@
 
 <h2 class="speech-title">Your Celebrant Speech</h2>
 
-<div id="speech-content">
+<div id="speech-content" class="speech-content">
   <p>Loading your speech...</p>
 </div>
 
 <!-- Audio Controls -->
-<button type="button" onclick="readAloud()">🔊 Play</button>
-<button type="button" onclick="pauseSpeech()">⏸️ Pause</button>
-<button type="button" onclick="resumeSpeech()">▶️ Resume</button>
-<button type="button" onclick="stopSpeech()">⏹️ Stop</button>
+<div class="audio-controls">
+  <button id="play-pause" onclick="toggleAudio()" class="audio-button">▶️ Play</button>
+  <button id="stop" onclick="stopSpeech()" class="audio-button">⏹️ Stop</button>
+</div>
+
+<%= link_to 'Create another speech', new_speech_request_path, class: "new-speech-link" %>
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     const speechContent = document.getElementById("speech-content");
     const speechRequestId = "<%= @speech_request.id %>";
-    let utterance;  // Declare globally to control state
+    let utterance;
+    let isPlaying = false;
 
     if (!window.speechPolling) {
       function checkSpeechStatus() {
@@ -33,7 +36,7 @@
           .then(data => {
             if (data.generated_speech) {
               speechContent.innerHTML = `<p>${data.generated_speech}</p>`;
-              clearInterval(window.speechPolling);  // Stop polling when speech is ready
+              clearInterval(window.speechPolling);  // Stop polling once speech is ready
             }
           })
           .catch(error => console.error("Error:", error));
@@ -43,32 +46,110 @@
     }
   });
 
-  function readAloud() {
+  function toggleAudio() {
     const content = document.getElementById("speech-content").textContent;
-    if (content && content.trim() !== "Loading your speech...") {
-      stopSpeech();  // Stop any ongoing speech before starting new one
+    if (!utterance && content && content.trim() !== "Loading your speech...") {
       utterance = new SpeechSynthesisUtterance(content);
+      utterance.onend = () => {
+        isPlaying = false;
+        document.getElementById('play-pause').textContent = '▶️ Play';
+      };
       window.speechSynthesis.speak(utterance);
-    } else {
-      alert("The speech is not ready yet.");
-    }
-  }
-
-  function pauseSpeech() {
-    if (window.speechSynthesis.speaking && !window.speechSynthesis.paused) {
+      isPlaying = true;
+      document.getElementById('play-pause').textContent = '⏸️ Pause';
+    } else if (isPlaying) {
       window.speechSynthesis.pause();
-    }
-  }
-
-  function resumeSpeech() {
-    if (window.speechSynthesis.paused) {
+      isPlaying = false;
+      document.getElementById('play-pause').textContent = '▶️ Resume';
+    } else if (!isPlaying && window.speechSynthesis.paused) {
       window.speechSynthesis.resume();
+      isPlaying = true;
+      document.getElementById('play-pause').textContent = '⏸️ Pause';
     }
   }
 
   function stopSpeech() {
-    window.speechSynthesis.cancel();  // Stops the speech synthesis completely
+    window.speechSynthesis.cancel();
+    isPlaying = false;
+    document.getElementById('play-pause').textContent = '▶️ Play';
+    utterance = null;
   }
 </script>
 
-<%= link_to 'Create another speech', new_speech_request_path, class: "new-speech-link" %>
+<style>
+  /* Styling for the show page */
+  .page-title {
+    text-align: center;
+    color: var(--rose-gold);
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .speech-details {
+    font-size: 1.1rem;
+    color: var(--dark-gray);
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+
+  .divider {
+    border: none;
+    border-top: 1px solid var(--light-gray);
+    margin: 2rem 0;
+  }
+
+  .speech-title {
+    font-size: 1.5rem;
+    color: var(--rose-gold);
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  .speech-content {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: var(--text-color);
+    padding: 1.5rem;
+    background-color: var(--light-gray);
+    border-radius: 8px;
+  }
+
+  .audio-controls {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+
+  .audio-button {
+    background-color: var(--rose-gold);
+    color: var(--dark-gray);
+    border: none;
+    padding: 0.5rem 1.5rem;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .audio-button:hover {
+    background-color: #a2616f;
+    color: white;
+  }
+
+  .new-speech-link {
+    display: block;
+    margin: 2rem auto;
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--rose-gold);
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  .new-speech-link:hover {
+    color: #a2616f;
+  }
+</style>
