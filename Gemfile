@@ -74,3 +74,9 @@ gem 'ruby-openai'
 gem 'httparty'
 gem 'sidekiq'
 gem 'font-awesome-sass'
+# Use PostgreSQL as the database for Active Record
+
+# Use SQLite for development and test environments
+group :development, :test do
+  gem 'sqlite3'
+end

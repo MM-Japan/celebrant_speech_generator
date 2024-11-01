@@ -721,7 +721,17 @@ p {
   font-size: 1rem;
 }
 
+.contact-max {
+  color: #908e8e;
+}
 
+.custom-link {
+  color: #d98a83;
+}
+
+.custom-link:hover {
+  color: #a06864; /* Darken on hover */
+}
 
 
 
