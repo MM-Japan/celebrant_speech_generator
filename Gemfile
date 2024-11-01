@@ -80,3 +80,5 @@ gem 'font-awesome-sass'
 group :development, :test do
   gem 'sqlite3'
 end
+
+gem 'ffi', '>= 1.15'
