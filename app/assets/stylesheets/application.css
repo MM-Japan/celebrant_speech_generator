@@ -1,7 +1,3 @@
-@import "font-awesome-sprockets";
-@import "font-awesome";
-
-
 Variables for colors
 :root {
   --rose-gold: #b76e79;
@@ -610,6 +606,8 @@ p {
 
 .cta-button:hover, .submit-button:hover {
   background-color: #e65b50;
+  text-decoration: none;
+  color: white;
 }
 
 .record-button {
@@ -689,7 +687,7 @@ p {
 /* Navbar Styling */
 .navbar {
   background-color: #FF6F61; /* Pink color */
-  padding: 1rem 2rem;
+  padding: 0.5rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -710,7 +708,7 @@ p {
 .navbar-link {
   color: white;
   text-decoration: none;
-  font-size: 1.5rem;
+  font-size: 1rem;
   padding: 0.5rem 1rem;
   transition: color 0.3s;
 }
@@ -720,7 +718,7 @@ p {
 }
 
 .icon-home {
-  font-size: 1.5rem;
+  font-size: 1rem;
 }
 
 
