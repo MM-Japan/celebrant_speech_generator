@@ -1,7 +1,7 @@
 Sidekiq.configure_server do |config|
-  config.redis = { url: ENV['REDIS_URL'], size: 20, network_timeout: 10 }
+  config.redis = { url: ENV['REDIS_TLS_URL'], ssl_params: { verify_mode: OpenSSL::SSL::VERIFY_NONE } }
 end
 
 Sidekiq.configure_client do |config|
-  config.redis = { url: ENV['REDIS_URL'], size: 20, network_timeout: 10 }
+  config.redis = { url: ENV['REDIS_TLS_URL'], ssl_params: { verify_mode: OpenSSL::SSL::VERIFY_NONE } }
 end
