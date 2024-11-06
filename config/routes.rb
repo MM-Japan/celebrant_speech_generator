@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
   require 'sidekiq/web'
+  Sidekiq::Web.use Rack::Auth::Basic do |username, password|
+    # Replace 'admin' and 'password' with your own credentials.
+    ActiveSupport::SecurityUtils.secure_compare(username, ENV["max"]) &
+    ActiveSupport::SecurityUtils.secure_compare(password, ENV["m0n0p0ly"])
+  end if Rails.env.production?
   mount Sidekiq::Web => '/sidekiq'
 
   # Health check
