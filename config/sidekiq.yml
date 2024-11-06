@@ -3,3 +3,4 @@
   - default
 :redis:
   url: <%= ENV['REDIS_URL'] %>
+:log_level: debug
