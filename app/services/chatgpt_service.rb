@@ -2,7 +2,7 @@ class ChatgptService
   include HTTParty
 
   def initialize(speech_request)
-    api_key = Rails.application.credentials.openai_api_key
+    api_key = ENV['OPENAI_API_KEY'] || Rails.application.credentials.openai_api_key
     @api_url = 'https://api.openai.com/v1/chat/completions'
     @headers = {
       'Content-Type' => 'application/json',
@@ -10,6 +10,7 @@ class ChatgptService
     }
     @speech_request = speech_request
   end
+
 
   def call
     body = {
