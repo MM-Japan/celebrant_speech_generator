@@ -104,6 +104,8 @@ class ChatgptService
     )
 
     response.dig('choices', 0, 'message', 'content')
+    Rails.logger.info("OpenAI API response: #{response.body}")
+
   end
   private
 
