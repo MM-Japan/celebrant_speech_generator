@@ -2,7 +2,7 @@ class ChatgptService
   include HTTParty
 
   def initialize(speech_request)
-    api_key = "REDACTED"
+    api_key = ENV['OPENAI_API_KEY']
     @api_url = 'https://api.openai.com/v1/chat/completions'
     @headers = {
       'Content-Type' => 'application/json',
@@ -48,7 +48,7 @@ class ChatgptService
     response = HTTParty.post('https://api.openai.com/v1/chat/completions',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': "Bearer REDACTED"
+        'Authorization': "Bearer #{ENV['OPENAI_API_KEY']}"
       },
       body: {
         model: "gpt-3.5-turbo",
@@ -73,7 +73,7 @@ class ChatgptService
     response = HTTParty.post('https://api.openai.com/v1/chat/completions',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': "Bearer REDACTED"
+        'Authorization': "Bearer #{ENV['OPENAI_API_KEY']}"
       },
       body: {
         model: "gpt-3.5-turbo",
@@ -122,7 +122,7 @@ class ChatgptService
     response = HTTParty.post('https://api.openai.com/v1/chat/completions',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': "Bearer REDACTED"
+        'Authorization': "Bearer #{ENV['OPENAI_API_KEY']}"
       },
       body: {
         model: "gpt-3.5-turbo",
