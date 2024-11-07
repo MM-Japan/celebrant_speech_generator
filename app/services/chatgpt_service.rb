@@ -2,7 +2,7 @@ class ChatgptService
   include HTTParty
 
   def initialize(speech_request)
-    api_key = ENV['OPENAI_API_KEY']
+    api_key = "REDACTED"
     @api_url = 'https://api.openai.com/v1/chat/completions'
     @headers = {
       'Content-Type' => 'application/json',
