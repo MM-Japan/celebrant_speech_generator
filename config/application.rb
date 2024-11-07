@@ -8,6 +8,9 @@ Bundler.require(*Rails.groups)
 
 module CelebrantSpeechGenerator
   class Application < Rails::Application
+
+    config.require_master_key = true
+
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.1
 
@@ -29,3 +32,5 @@ module CelebrantSpeechGenerator
 
   end
 end
+
+
