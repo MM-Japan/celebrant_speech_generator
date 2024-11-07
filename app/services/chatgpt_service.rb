@@ -48,7 +48,7 @@ class ChatgptService
     response = HTTParty.post('https://api.openai.com/v1/chat/completions',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': "Bearer #{Rails.application.credentials.openai_api_key}"
+        'Authorization': "Bearer REDACTED"
       },
       body: {
         model: "gpt-3.5-turbo",
@@ -73,7 +73,7 @@ class ChatgptService
     response = HTTParty.post('https://api.openai.com/v1/chat/completions',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': "Bearer #{Rails.application.credentials.openai_api_key}"
+        'Authorization': "Bearer REDACTED"
       },
       body: {
         model: "gpt-3.5-turbo",
@@ -122,7 +122,7 @@ class ChatgptService
     response = HTTParty.post('https://api.openai.com/v1/chat/completions',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': "Bearer #{Rails.application.credentials.openai_api_key}"
+        'Authorization': "Bearer REDACTED"
       },
       body: {
         model: "gpt-3.5-turbo",
