@@ -5,6 +5,7 @@
       <!-- Add any branding here if needed -->
     </div>
     <div class="navbar-right">
+
         <% if user_signed_in? %>
         <%= form_with(url: destroy_user_session_path, method: :delete, local: true, class: 'd-inline') do %>
           <%= submit_tag 'Log Out', class: 'btn btn-link nav-link', data: { disable_with: 'Logging out...' } %>
@@ -14,6 +15,7 @@
       <% end %>
       <%= link_to root_path, class: "navbar-link" do %>
         <i class="fas fa-home"></i>
+
       <% end %>
     </div>
   </div>

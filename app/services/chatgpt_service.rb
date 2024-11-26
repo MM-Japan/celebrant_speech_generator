@@ -63,6 +63,34 @@ class ChatgptService
     response.dig('choices', 0, 'message', 'content') || "No questions generated."
   end
 
+  def self.generate_questions(speech_request)
+    prompt = "Based on the following details, generate 5 follow-up questions that the user can answer about their #{speech_request.relation}, #{speech_request.name}.
+              The questions should be asked from the perspective of someone answering about their #{speech_request.relation}, not the person directly:
+              Childhood: #{speech_request.childhood_overview}.
+              Work: #{speech_request.work_overview}.
+              Family: #{speech_request.family_overview}.
+              Hobbies: #{speech_request.hobbies_overview}.
+              Travel: #{speech_request.travel_overview}.
+              Use respectful and reverent language."
+
+    response = HTTParty.post('https://api.openai.com/v1/chat/completions',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': "Bearer #{ENV['OPENAI_API_KEY']}"
+      },
+      body: {
+        model: "gpt-3.5-turbo",
+        messages: [{ role: "user", content: prompt }],
+        max_tokens: 200
+      }.to_json
+    )
+
+    # Log the full API response for troubleshooting
+    Rails.logger.info("OpenAI API response for questions: #{response.body}")
+
+    response.dig('choices', 0, 'message', 'content') || "No questions generated."
+  end
+
   def self.generate_speech(speech_request)
     # If detailed_answers is a hash, join the answers into a readable string
     if speech_request.detailed_answers.is_a?(Hash)

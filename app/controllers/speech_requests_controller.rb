@@ -82,7 +82,9 @@ class SpeechRequestsController < ApplicationController
       :hobbies_overview,
       :travel_overview,
       :tokens,
+
       detailed_answers: {}
+
     )
   end
 end
