@@ -34,13 +34,15 @@
 
 <div class="container">
 
-<div id="featuresCarousel" class="carousel slide" data-ride="carousel">
+
+<div id="featuresCarousel" class="carousel slide" data-controller="carousel" data-bs-ride="carousel">
   <!-- Indicators -->
-  <ol class="carousel-indicators">
-    <li data-target="#featuresCarousel" data-slide-to="0" class="active"></li>
-    <li data-target="#featuresCarousel" data-slide-to="1"></li>
-    <li data-target="#featuresCarousel" data-slide-to="2"></li>
-  </ol>
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#featuresCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#featuresCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#featuresCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+
 
   <!-- Carousel slides -->
   <div class="carousel-inner">
@@ -71,14 +73,15 @@
 
 
   <!-- Controls -->
-  <a class="carousel-control-prev" href="#featuresCarousel" role="button" data-slide="prev">
+  <button class="carousel-control-prev" type="button" data-bs-target="#featuresCarousel" data-bs-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#featuresCarousel" role="button" data-slide="next">
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#featuresCarousel" data-bs-slide="next">
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
+    <span class="visually-hidden">Next</span>
+  </button>
+
 </div>
 
 </div>

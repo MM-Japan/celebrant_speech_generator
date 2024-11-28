@@ -84,3 +84,7 @@ end
 gem 'ffi', '~> 1.15.5'
 
 gem 'redis'
+
+
+gem "devise", "~> 4.9"
+

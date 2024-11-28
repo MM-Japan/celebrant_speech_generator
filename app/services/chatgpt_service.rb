@@ -57,7 +57,10 @@ class ChatgptService
       }.to_json
     )
 
-    response.dig('choices', 0, 'message', 'content')
+    # Log the full API response for troubleshooting
+    Rails.logger.info("OpenAI API response for questions: #{response.body}")
+
+    response.dig('choices', 0, 'message', 'content') || "No questions generated."
   end
 
   def self.generate_questions(speech_request)

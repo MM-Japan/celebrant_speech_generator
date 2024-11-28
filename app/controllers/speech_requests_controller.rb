@@ -1,4 +1,5 @@
 class SpeechRequestsController < ApplicationController
+  before_action :authenticate_user!
   def new
     @speech_request = SpeechRequest.new
   end
@@ -81,7 +82,9 @@ class SpeechRequestsController < ApplicationController
       :hobbies_overview,
       :travel_overview,
       :tokens,
-      detailed_answers: {}  
+
+      detailed_answers: {}
+
     )
   end
 end
