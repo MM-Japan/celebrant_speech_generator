@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_11_21_065524) do
+ActiveRecord::Schema[7.1].define(version: 2024_11_28_062516) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -30,6 +30,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_21_065524) do
     t.text "follow_up_questions"
     t.text "detailed_answers"
     t.integer "tokens", default: 1000
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_speech_requests_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -44,4 +46,5 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_21_065524) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "speech_requests", "users"
 end
