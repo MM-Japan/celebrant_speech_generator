@@ -1,11 +1,17 @@
 class SpeechRequestsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_speech_request, only: [:show, :edit, :update, :destroy]
+
   def new
     @speech_request = SpeechRequest.new
   end
 
+  def index
+    @speech_requests = current_user.speech_requests
+  end
+
   def create
-    @speech_request = SpeechRequest.new(speech_request_params)
+    @speech_request = current_user.speech_requests.new(speech_request_params)
 
     if @speech_request.save
       Rails.logger.info("SpeechRequest created with ID: #{@speech_request.id}")
@@ -69,7 +75,19 @@ class SpeechRequestsController < ApplicationController
     Rails.logger.info("Showing SpeechRequest ID: #{@speech_request.id} with sentiment analysis.")
   end
 
+  def destroy
+    @speech_request.destroy
+    redirect_to speech_requests_path, notice: 'Speech request was successfully deleted.'
+  end
+
   private
+
+  def set_speech_request
+    @speech_request = current_user.speech_requests.find_by(id: params[:id])
+    if @speech_request.nil?
+      redirect_to speech_requests_path, alert: 'Speech request not found or you are not authorized to access it.'
+    end
+  end
 
   def speech_request_params
     params.require(:speech_request).permit(

@@ -1,0 +1,13 @@
+<h1>My Speech Requests</h1>
+
+<% @speech_requests.each do |speech_request| %>
+  <p>
+    <strong> <%= speech_request.name %><br> </strong>
+    <%= link_to 'Show', speech_request %> |
+    <%= link_to 'Edit', edit_speech_request_path(speech_request) %> |
+
+    <%= form_with(url: speech_request_path(speech_request), method: :delete, local: true, class: 'd-inline') do %>
+      <%= submit_tag 'Destroy', data: { confirm: 'Are you sure?' }, class: 'btn btn-link nav-link' %>
+    <% end %>
+  </p>
+<% end %>

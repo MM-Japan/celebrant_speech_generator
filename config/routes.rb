@@ -23,7 +23,7 @@ Rails.application.routes.draw do
 
 
   # Main routes for speech_requests with check_status member route
-  resources :speech_requests, only: [:new, :create, :show, :edit, :update] do
+  resources :speech_requests, only: [:index, :new, :create, :show, :edit, :update, :destroy] do
     member do
       get :check_status
       post :analyze_sentiment
