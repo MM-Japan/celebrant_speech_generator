@@ -1,6 +1,6 @@
 class SpeechRequestsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_speech_request, only: [:show, :edit, :update]
+  before_action :set_speech_request, only: [:show, :edit, :update, :destroy]
 
   def new
     @speech_request = SpeechRequest.new
@@ -73,6 +73,11 @@ class SpeechRequestsController < ApplicationController
     @speech_request = SpeechRequest.find(params[:id])
     @sentiment = @speech_request.analyze_sentiment
     Rails.logger.info("Showing SpeechRequest ID: #{@speech_request.id} with sentiment analysis.")
+  end
+
+  def destroy
+    @speech_request.destroy
+    redirect_to speech_requests_path, notice: 'Speech request was successfully deleted.'
   end
 
   private

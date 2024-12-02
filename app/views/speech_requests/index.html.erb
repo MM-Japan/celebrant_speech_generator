@@ -5,6 +5,9 @@
     <strong> <%= speech_request.name %><br> </strong>
     <%= link_to 'Show', speech_request %> |
     <%= link_to 'Edit', edit_speech_request_path(speech_request) %> |
-    <%= link_to 'Destroy', speech_request, method: :delete, data: { confirm: 'Are you sure?' } %>
+
+    <%= form_with(url: speech_request_path(speech_request), method: :delete, local: true, class: 'd-inline') do %>
+      <%= submit_tag 'Destroy', data: { confirm: 'Are you sure?' }, class: 'btn btn-link nav-link' %>
+    <% end %>
   </p>
 <% end %>

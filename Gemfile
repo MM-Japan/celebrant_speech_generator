@@ -88,3 +88,4 @@ gem 'redis'
 
 gem "devise", "~> 4.9"
 
+gem 'rails-erd'
