@@ -733,6 +733,112 @@ p {
   color: #a06864; /* Darken on hover */
 }
 
+/* Styles for the speech list */
+.speech-list {
+  max-width: 800px;
+  margin: 2rem auto;
+}
+
+/* Styles for each speech item */
+.speech-item {
+  background-color: #ffffff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Styles for the speech actions container */
+.speech-actions {
+  margin-top: 1rem;
+}
+
+/* Styles for action links */
+.speech-action-link {
+  color: var(--rose-gold);
+  text-decoration: none;
+  font-weight: bold;
+  margin-right: 0.5rem;
+}
+
+.speech-action-link:hover {
+  color: #a2616f;
+}
+
+/* Ensuring the form displays inline */
+.d-inline {
+  display: inline;
+}
+
+/* General list container */
+.speech-list {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1rem;
+  background-color: var(--light-gray);
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Individual speech item */
+.speech-item {
+  background-color: white;
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Speech title */
+.speech-title {
+  font-size: 1.2rem;
+  color: var(--rose-gold);
+  margin: 0;
+}
+
+/* Action buttons container */
+.speech-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* Action link buttons */
+.speech-action-link {
+  background-color: var(--rose-gold);
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+.speech-action-link:hover {
+  background-color: #a2616f;
+}
+
+/* Specific style for delete button */
+.delete-button {
+  background-color: #ff6b6b;
+}
+
+.delete-button:hover {
+  background-color: #e55b5b;
+}
+
+.card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
 
 
 /* Responsive Design for Mobile */

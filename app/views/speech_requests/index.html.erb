@@ -1,13 +1,31 @@
-<h1>My Speech Requests</h1>
+<h1 class="text-center mt-4 text-primary">My Speech Requests</h1>
 
-<% @speech_requests.each do |speech_request| %>
-  <p>
-    <strong> <%= speech_request.name %><br> </strong>
-    <%= link_to 'Show', speech_request %> |
-    <%= link_to 'Edit', edit_speech_request_path(speech_request) %> |
-
-    <%= form_with(url: speech_request_path(speech_request), method: :delete, local: true, class: 'd-inline') do %>
-      <%= submit_tag 'Destroy', data: { confirm: 'Are you sure?' }, class: 'btn btn-link nav-link' %>
+<div class="container mt-4">
+  <div class="row g-3">
+    <% @speech_requests.each do |speech_request| %>
+      <div class="col-md-6 col-lg-4">
+        <div class="card shadow-sm position-relative">
+          <!-- Make the entire card clickable -->
+          <%= link_to speech_request_path(speech_request), class: "stretched-link text-decoration-none" do %>
+            <div class="card-body">
+              <!-- Display the speech name -->
+              <h5 class="card-title text-center"><%= speech_request.name %></h5>
+            </div>
+          <% end %>
+          <div class="card-footer d-flex justify-content-between">
+            <!-- Edit button -->
+            <%= link_to edit_speech_request_path(speech_request), class: "btn btn-outline-primary btn-sm" do %>
+              <i class="fas fa-edit"></i>
+            <% end %>
+            <!-- Delete button -->
+            <%= form_with(url: speech_request_path(speech_request), method: :delete, local: true, class: "d-inline") do %>
+              <button type="submit" class="btn btn-outline-danger btn-sm" data-bs-toggle="tooltip" title="Delete">
+                <i class="fas fa-trash-alt"></i>
+              </button>
+            <% end %>
+          </div>
+        </div>
+      </div>
     <% end %>
-  </p>
-<% end %>
+  </div>
+</div>
