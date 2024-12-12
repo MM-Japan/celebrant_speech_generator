@@ -10,23 +10,24 @@ Rails.application.routes.draw do
     ActiveSupport::SecurityUtils.secure_compare(username, secure_username) &
     ActiveSupport::SecurityUtils.secure_compare(password, secure_password)
   end if Rails.env.production?
-
-  mount Sidekiq::Web => '/sidekiq'
-
-
-  # Health check
-  get "up" => "rails/health#show", as: :rails_health_check
-
-  # Root path
-  # In config/routes.rb
-  root "pages#home" # If using PagesController
+ # scope '/celebrant' do
+    mount Sidekiq::Web => '/sidekiq'
 
 
-  # Main routes for speech_requests with check_status member route
-  resources :speech_requests, only: [:index, :new, :create, :show, :edit, :update, :destroy] do
-    member do
-      get :check_status
-      post :analyze_sentiment
+    # Health check
+    get "up" => "rails/health#show", as: :rails_health_check
+
+    # Root path
+    # In config/routes.rb
+    root "pages#home" # If using PagesController
+
+
+    # Main routes for speech_requests with check_status member route
+    resources :speech_requests, only: [:index, :new, :create, :show, :edit, :update, :destroy] do
+      member do
+        get :check_status
+        post :analyze_sentiment
+      end
     end
-  end
+  #end
 end

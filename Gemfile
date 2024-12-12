@@ -69,7 +69,7 @@ group :test do
 end
 
 # Added gems
-gem 'dotenv-rails', groups: [:development, :test]
+gem 'dotenv-rails', groups: [:development, :test, :production]
 gem 'ruby-openai'
 gem 'httparty'
 gem 'sidekiq'
