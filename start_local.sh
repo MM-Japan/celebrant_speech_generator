@@ -10,7 +10,7 @@ bundle exec sidekiq &
 
 # Start Rails server
 echo "Starting Rails server..."
-bundle exec rails server
+bundle exec rails server -p 3001
 
 
 # Run this script to automatically set up for local
